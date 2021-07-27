@@ -1,1 +1,5 @@
 # pomoromo
+
+## run
+
+`./start.sh`
