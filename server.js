@@ -5,8 +5,8 @@ const path = require("path");
 
 const port = 3000;
 
-var key = fs.readFileSync(__dirname + "/selfsigned.key");
-var cert = fs.readFileSync(__dirname + "/selfsigned.crt");
+var key = fs.readFileSync(__dirname + "/localhost.key");
+var cert = fs.readFileSync(__dirname + "/localhost.crt");
 var options = {
   key: key,
   cert: cert,
