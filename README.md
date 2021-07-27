@@ -2,7 +2,12 @@
 
 ## run
 
-`./start.sh`
+```
+npm i
+node server.js
+```
+
+Open https://localhost:3000
 
 ## timer countdown
 
@@ -24,3 +29,7 @@ Generate key and certificate:
 `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt`
 
 https://stackoverflow.com/questions/11744975/enabling-https-on-express-js/52007971#52007971
+
+## express and static files
+
+https://expressjs.com/en/starter/static-files.html

@@ -1,6 +1,8 @@
 const express = require("express");
 const https = require("https");
 const fs = require("fs");
+const path = require("path");
+
 const port = 3000;
 
 var key = fs.readFileSync(__dirname + "/selfsigned.key");
@@ -11,9 +13,8 @@ var options = {
 };
 
 app = express();
-app.get("/", (req, res) => {
-  res.send("Now using https..");
-});
+
+app.use("/", express.static(path.join(__dirname, "public")));
 
 var server = https.createServer(options, app);
 
