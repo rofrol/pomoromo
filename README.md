@@ -1,5 +1,7 @@
 # pomoromo
 
+![](./screenshot.png)
+
 ## run
 
 ```
