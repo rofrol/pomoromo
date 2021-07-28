@@ -18,8 +18,8 @@ function startTimer(duration, display, callback) {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    minutes = minutes.toString().padStart(2, "0");
+    seconds = seconds.toString().padStart(2, "0");
 
     display.textContent = minutes + ":" + seconds;
 
