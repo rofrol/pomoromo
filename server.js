@@ -8,8 +8,8 @@ const port = 3000;
 var key = fs.readFileSync(__dirname + "/localhost.key");
 var cert = fs.readFileSync(__dirname + "/localhost.crt");
 var options = {
-  key: key,
-  cert: cert,
+  key,
+  cert,
 };
 
 app = express();
