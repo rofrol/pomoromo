@@ -10,19 +10,15 @@ function notification() {
   });
 }
 
+let interval;
+let timer = 0;
+
 function startTimer(duration, display, callback) {
-  var timer = duration,
-    minutes,
-    seconds;
-  const interval = setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes.toString().padStart(2, "0");
-    seconds = seconds.toString().padStart(2, "0");
-
-    display.textContent = minutes + ":" + seconds;
-
+  if (timer === 0) timer = duration;
+  startpause.textContent = "Pause";
+  startpause.onclick = pauseTimer;
+  interval = setInterval(function () {
+    display.textContent = formatSeconds(timer);
     if (--timer < 0) {
       clearInterval(interval);
       callback();
@@ -30,6 +26,34 @@ function startTimer(duration, display, callback) {
   }, 1000);
 }
 
+const formatSeconds = (timer) => {
+  const minutes = parseInt(timer / 60, 10)
+    .toString()
+    .padStart(2, "0");
+  const seconds = parseInt(timer % 60, 10)
+    .toString()
+    .padStart(2, "0");
+  return minutes + ":" + seconds;
+};
+
+const pauseTimer = () => {
+  clearInterval(interval);
+  startpause.textContent = "Start";
+  startpause.onclick = () => startTimer(timer, display, notification);
+};
+
+const resetTimer = () => {
+  clearInterval(interval);
+  startpause.textContent = "Start";
+  startpause.onclick = () => startTimer(seconds, display, notification);
+  timer = 0;
+  display.textContent = formatSeconds(seconds);
+};
+
 const seconds = 60 * 25;
 const display = document.querySelector("#time");
+const startpause = document.querySelector("#startpause");
 window.startTimer = () => startTimer(seconds, display, notification);
+window.pauseTimer = pauseTimer;
+window.resetTimer = resetTimer;
+window.interval = interval;
